@@ -19,35 +19,35 @@ struct SettingsView: View {
 
             TextField("Enter an access token for the API", text: $accessToken)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
 
-            Button("Validate token") {
+            Button(action: {
                 self.validateToken()
-            }.buttonStyle(PrimaryButtonStyle())
+            }) {
+                PrimaryButtonContent(title: "Validate token", isLoading: isLoading)
+            }
             .padding(.horizontal, 20)
-            .disabled(isLoading)
+            .frame(height: 40.0)
+            .buttonStyle(PrimaryButtonStyle())
 
             if isValidAccessToken {
-                Text("Valid token ✅")
+                Text("Valid token ✅ You can start using the app normally.")
                     .foregroundColor(.green)
-                    .font(.headline)
+                    .font(.callout)
                     .padding(.horizontal, 20)
+                    .padding(.vertical, 10)
             } else {
-                Text("Invalid or empty token ❌ please add a valid api token from themoviedb")
+                Text("Invalid token ❌ Please add a valid API token from TheMovieDB")
                     .foregroundColor(.red)
-                    .font(.headline)
+                    .font(.callout)
                     .padding(.horizontal, 20)
-                    .padding(.vertical, 4)
-
-                Link("Go to themoviedb", destination: URL(string: "https://developer.themoviedb.org/v3/reference/intro/authentication#api-key-quick-start")!)
-                    .font(.body)
-                    .padding()
+                    .padding(.vertical, 10)
             }
 
-            if isLoading {
-                ProgressView("Checking token...")
-                    .padding()
-            }
+            Link("Go to TheMovieDB", destination: URL(string: "https://developer.themoviedb.org/v3/reference/intro/authentication#api-key-quick-start")!)
+                .font(.body)
+                .padding()
 
             Spacer()
         }.padding(.top, 20)
@@ -56,8 +56,10 @@ struct SettingsView: View {
     // Function to validate token
     func validateToken() {
 
-        self.isLoading = true
         Task {
+
+            self.isLoading = true
+
             do {
                 self.isValidAccessToken = await SettingsDataSource().authenticate(apiAccessToken: self.accessToken)
 
@@ -80,6 +82,22 @@ struct PrimaryButtonStyle: ButtonStyle {
             .frame(maxWidth: .infinity)
             .background(configuration.isPressed ? Color.blue.opacity(0.8) : Color.blue)
             .cornerRadius(10)
+    }
+}
+
+struct PrimaryButtonContent: View {
+
+    var title: String
+    var isLoading: Bool
+
+    var body: some View {
+        ZStack {
+            if isLoading {
+                ProgressView()
+            } else {
+                Text(title)
+            }
+        }
     }
 }
 
