@@ -13,8 +13,22 @@ struct MyMoviesApp: App {
 
     var body: some Scene {
         WindowGroup {
+            MainView()
+        }
+    }
+}
+
+struct MainView: View {
+    var body: some View {
+        TabView {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .tabItem {
+                    Label("Movies", systemImage: "list.dash")
+                }
+            SettingsView()
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                }
         }
     }
 }
