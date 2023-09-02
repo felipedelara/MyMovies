@@ -17,14 +17,13 @@ struct SettingsView: View {
         VStack {
             Image(systemName: "popcorn.circle").font(.system(size: 120)).foregroundColor(isValidAccessToken ? .green : .red)
 
-
             TextField("Enter an access token for the API", text: $accessToken)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
 
             Button("Validate token") {
                 self.validateToken()
-            }
+            }.buttonStyle(PrimaryButtonStyle())
             .padding(.horizontal, 20)
             .disabled(isLoading)
 
@@ -71,6 +70,19 @@ struct SettingsView: View {
     }
 }
 
+struct PrimaryButtonStyle: ButtonStyle {
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(configuration.isPressed ? Color.blue.opacity(0.8) : Color.blue)
+            .cornerRadius(10)
+    }
+}
+
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
@@ -96,6 +108,7 @@ class SettingsDataSource {
         var request = URLRequest(url: url)
 
         for header in headers {
+
             request.addValue(header.value, forHTTPHeaderField: header.key)
         }
 
