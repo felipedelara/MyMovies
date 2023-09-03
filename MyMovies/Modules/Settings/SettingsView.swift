@@ -21,6 +21,10 @@ struct SettingsView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
+                .onAppear {
+
+                    self.attemptSavedToken()
+                }
 
             Button(action: {
                 self.validateToken()
@@ -53,7 +57,15 @@ struct SettingsView: View {
         }.padding(.top, 20)
     }
 
-    // Function to validate token
+    func attemptSavedToken() {
+
+        if let token = SettingsDataSource().getAccessToken() {
+
+            self.accessToken = token
+            self.validateToken()
+        }
+    }
+
     func validateToken() {
 
         Task {
