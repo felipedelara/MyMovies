@@ -10,7 +10,7 @@
 		E8AA00D72AA3BD1D00EFBBFA /* MyMoviesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA00D62AA3BD1D00EFBBFA /* MyMoviesApp.swift */; };
 		E8AA00D92AA3BD1D00EFBBFA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA00D82AA3BD1D00EFBBFA /* Persistence.swift */; };
 		E8AA00DC2AA3BD1D00EFBBFA /* MyMovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8AA00DA2AA3BD1D00EFBBFA /* MyMovies.xcdatamodeld */; };
-		E8AA00DE2AA3BD1D00EFBBFA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA00DD2AA3BD1D00EFBBFA /* ContentView.swift */; };
+		E8AA00DE2AA3BD1D00EFBBFA /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA00DD2AA3BD1D00EFBBFA /* MovieListView.swift */; };
 		E8AA00E02AA3BD2400EFBBFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8AA00DF2AA3BD2400EFBBFA /* Assets.xcassets */; };
 		E8AA00E42AA3BD2400EFBBFA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8AA00E32AA3BD2400EFBBFA /* Preview Assets.xcassets */; };
 		E8AA00EE2AA3BD2400EFBBFA /* MyMoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA00ED2AA3BD2400EFBBFA /* MyMoviesTests.swift */; };
@@ -22,6 +22,7 @@
 		E8AA01112AA3D15300EFBBFA /* AuthenticateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA01102AA3D15300EFBBFA /* AuthenticateResponse.swift */; };
 		E8AA01132AA4AB9700EFBBFA /* SettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA01122AA4AB9700EFBBFA /* SettingsDataSource.swift */; };
 		E8AA01162AA4ABCD00EFBBFA /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA01152AA4ABCD00EFBBFA /* ButtonStyles.swift */; };
+		E8AA01182AA50B2800EFBBFA /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA01172AA50B2800EFBBFA /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +47,7 @@
 		E8AA00D62AA3BD1D00EFBBFA /* MyMoviesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMoviesApp.swift; sourceTree = "<group>"; };
 		E8AA00D82AA3BD1D00EFBBFA /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		E8AA00DB2AA3BD1D00EFBBFA /* MyMovies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyMovies.xcdatamodel; sourceTree = "<group>"; };
-		E8AA00DD2AA3BD1D00EFBBFA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E8AA00DD2AA3BD1D00EFBBFA /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
 		E8AA00DF2AA3BD2400EFBBFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8AA00E12AA3BD2400EFBBFA /* MyMovies.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyMovies.entitlements; sourceTree = "<group>"; };
 		E8AA00E32AA3BD2400EFBBFA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -61,6 +62,7 @@
 		E8AA01102AA3D15300EFBBFA /* AuthenticateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateResponse.swift; sourceTree = "<group>"; };
 		E8AA01122AA4AB9700EFBBFA /* SettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataSource.swift; sourceTree = "<group>"; };
 		E8AA01152AA4ABCD00EFBBFA /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		E8AA01172AA50B2800EFBBFA /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +115,6 @@
 			children = (
 				E8AA00D62AA3BD1D00EFBBFA /* MyMoviesApp.swift */,
 				E8AA00D82AA3BD1D00EFBBFA /* Persistence.swift */,
-				E8AA00DD2AA3BD1D00EFBBFA /* ContentView.swift */,
 				E8AA01142AA4ABB800EFBBFA /* Styles */,
 				E8AA01092AA3BE4900EFBBFA /* Models */,
 				E8AA01062AA3BE2B00EFBBFA /* Modules */,
@@ -153,8 +154,8 @@
 		E8AA01062AA3BE2B00EFBBFA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				E8AA01082AA3BE3D00EFBBFA /* Settings */,
 				E8AA01072AA3BE3200EFBBFA /* MovieList */,
+				E8AA01082AA3BE3D00EFBBFA /* Settings */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -162,6 +163,7 @@
 		E8AA01072AA3BE3200EFBBFA /* MovieList */ = {
 			isa = PBXGroup;
 			children = (
+				E8AA00DD2AA3BD1D00EFBBFA /* MovieListView.swift */,
 			);
 			path = MovieList;
 			sourceTree = "<group>";
@@ -181,6 +183,7 @@
 				E8AA010C2AA3C20400EFBBFA /* Movie.swift */,
 				E8AA010E2AA3C21F00EFBBFA /* ListResponse.swift */,
 				E8AA01102AA3D15300EFBBFA /* AuthenticateResponse.swift */,
+				E8AA01172AA50B2800EFBBFA /* APIService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -327,10 +330,11 @@
 				E8AA00D72AA3BD1D00EFBBFA /* MyMoviesApp.swift in Sources */,
 				E8AA010F2AA3C21F00EFBBFA /* ListResponse.swift in Sources */,
 				E8AA01112AA3D15300EFBBFA /* AuthenticateResponse.swift in Sources */,
+				E8AA01182AA50B2800EFBBFA /* APIService.swift in Sources */,
 				E8AA010D2AA3C20400EFBBFA /* Movie.swift in Sources */,
 				E8AA01162AA4ABCD00EFBBFA /* ButtonStyles.swift in Sources */,
 				E8AA00DC2AA3BD1D00EFBBFA /* MyMovies.xcdatamodeld in Sources */,
-				E8AA00DE2AA3BD1D00EFBBFA /* ContentView.swift in Sources */,
+				E8AA00DE2AA3BD1D00EFBBFA /* MovieListView.swift in Sources */,
 				E8AA01132AA4AB9700EFBBFA /* SettingsDataSource.swift in Sources */,
 				E8AA00D92AA3BD1D00EFBBFA /* Persistence.swift in Sources */,
 			);

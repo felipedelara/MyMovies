@@ -21,7 +21,7 @@ struct MyMoviesApp: App {
 struct MainView: View {
     var body: some View {
         TabView {
-            ContentView()
+            MovieListView()
                 .tabItem {
                     Label("Movies", systemImage: "list.dash")
                 }

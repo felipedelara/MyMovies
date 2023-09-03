@@ -9,6 +9,7 @@ import Foundation
 
 // MARK: - AuthenticateResponse
 struct AuthenticateResponse: Codable {
+
     let statusCode: Int
     let statusMessage: String
     let success: Bool
