@@ -24,6 +24,7 @@
 		E8AA01182AA50B2800EFBBFA /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA01172AA50B2800EFBBFA /* APIService.swift */; };
 		E8AA011A2AA513A100EFBBFA /* MovieListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA01192AA513A100EFBBFA /* MovieListItem.swift */; };
 		E8AA011F2AA52C9900EFBBFA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA011E2AA52C9900EFBBFA /* Constants.swift */; };
+		E8AA01212AA52EBE00EFBBFA /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA01202AA52EBE00EFBBFA /* MovieDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		E8AA01172AA50B2800EFBBFA /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		E8AA01192AA513A100EFBBFA /* MovieListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListItem.swift; sourceTree = "<group>"; };
 		E8AA011E2AA52C9900EFBBFA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E8AA01202AA52EBE00EFBBFA /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			children = (
 				E8AA01072AA3BE3200EFBBFA /* MovieList */,
 				E8AA01082AA3BE3D00EFBBFA /* Settings */,
+				E8AA01202AA52EBE00EFBBFA /* MovieDetail.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				E8AA011A2AA513A100EFBBFA /* MovieListItem.swift in Sources */,
 				E8AA010D2AA3C20400EFBBFA /* Movie.swift in Sources */,
 				E8AA011F2AA52C9900EFBBFA /* Constants.swift in Sources */,
+				E8AA01212AA52EBE00EFBBFA /* MovieDetail.swift in Sources */,
 				E8AA01162AA4ABCD00EFBBFA /* ButtonStyles.swift in Sources */,
 				E8AA00DC2AA3BD1D00EFBBFA /* MyMovies.xcdatamodeld in Sources */,
 				E8AA00DE2AA3BD1D00EFBBFA /* MovieListView.swift in Sources */,

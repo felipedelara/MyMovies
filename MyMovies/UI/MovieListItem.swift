@@ -11,44 +11,46 @@ struct MovieListItem: View {
     
     let movie: Movie
     var body: some View {
-        HStack {
-            // Poster Image
-            AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(movie.posterPath)")) { phase in
-                
-                switch phase {
-                case .empty:
-                    Image(systemName: "photo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 120)
-                        .cornerRadius(8)
-                        .foregroundColor(.gray)
-                    
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 120)
-                        .cornerRadius(8)
-                case .failure(_):
-                    EmptyView()
-                @unknown default:
-                    EmptyView()
+        NavigationLink(destination: MovieDetailView(movie: movie)) {
+            HStack {
+                // Poster Image
+                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(movie.posterPath)")) { phase in
+
+                    switch phase {
+                    case .empty:
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 120)
+                            .cornerRadius(8)
+                            .foregroundColor(.gray)
+
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 120)
+                            .cornerRadius(8)
+                    case .failure(_):
+                        EmptyView()
+                    @unknown default:
+                        EmptyView()
+                    }
                 }
+
+                // Title and Release Date
+                VStack(alignment: .leading) {
+                    Text(movie.title)
+                        .font(.title)
+                    Text("Release Date: \(movie.releaseDate)")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }.padding()
+
+                Spacer()
             }
-            
-            // Title and Release Date
-            VStack(alignment: .leading) {
-                Text(movie.title)
-                    .font(.title)
-                Text("Release Date: \(movie.releaseDate)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }.padding()
-            
-            Spacer()
+            .padding()
         }
-        .padding()
     }
 }
 
