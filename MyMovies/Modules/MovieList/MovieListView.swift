@@ -33,8 +33,9 @@ struct MovieListView: View {
 
             case .content(let movies):
 
-                List(movies, id: \.id) { movies in
-                    Text(movies.originalTitle)
+                List(movies, id: \.id) { movie in
+                    MovieListItem(movie: movie)
+
                 }.listStyle(.plain)
                     .navigationTitle("Movies")
 
