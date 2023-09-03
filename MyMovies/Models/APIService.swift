@@ -15,9 +15,6 @@ enum ServiceError: Error {
 
 class APIService {
 
-    //TODO: mobe page to header
-    let getMoviesUrlString = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
-
     func getMovies() async throws -> [Movie] {
 
         guard let token = UserDefaults.standard.string(forKey: Constants.apiAccessTokenKey) else {
@@ -28,7 +25,7 @@ class APIService {
         let headers = ["accept": "application/json",
                        "Authorization": "Bearer \(token)"]
 
-        guard let url = URL(string: getMoviesUrlString) else {
+        guard let url = URL(string: Constants.getMoviesUrlString) else {
 
             throw ServiceError.invalidUrl
         }
@@ -50,6 +47,39 @@ class APIService {
         } catch {
 
             throw error
+        }
+    }
+
+    func authenticate(apiAccessToken: String) async -> Bool {
+
+        let headers = ["accept": "application/json",
+                       "Authorization": "Bearer \(apiAccessToken)"]
+
+        let getMoviesUrlString = "https://api.themoviedb.org/3/authentication"
+
+        guard let url = URL(string: getMoviesUrlString) else {
+
+            //TODO: make it throw
+            return false
+        }
+
+        var request = URLRequest(url: url)
+
+        for header in headers {
+
+            request.addValue(header.value, forHTTPHeaderField: header.key)
+        }
+
+        do {
+
+            let (data, _) = try await URLSession.shared.data(for: request)
+            let authenticateResponse = try JSONDecoder().decode(AuthenticateResponse.self, from: data)
+
+            return authenticateResponse.success
+
+        } catch {
+
+            return false
         }
     }
 }

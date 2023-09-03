@@ -59,7 +59,7 @@ struct SettingsView: View {
 
     func attemptSavedToken() {
 
-        if let token = SettingsDataSource().getAccessToken() {
+        if let token = self.getAccessToken() {
 
             self.accessToken = token
             self.validateToken()
@@ -73,7 +73,12 @@ struct SettingsView: View {
             self.isLoading = true
 
             do {
-                self.isValidAccessToken = await SettingsDataSource().authenticate(apiAccessToken: self.accessToken)
+                self.isValidAccessToken = await APIService().authenticate(apiAccessToken: self.accessToken)
+
+                if self.isValidAccessToken {
+
+                    self.save(accessToken: self.accessToken)
+                }
 
                 DispatchQueue.main.async {
 
@@ -81,6 +86,17 @@ struct SettingsView: View {
                 }
             }
         }
+    }
+
+    func getAccessToken() -> String? {
+
+        return UserDefaults.standard.string(forKey: Constants.apiAccessTokenKey)
+    }
+
+    func save(accessToken: String) {
+
+        UserDefaults.standard.set(accessToken, forKey: Constants.apiAccessTokenKey)
+        UserDefaults.standard.synchronize()
     }
 }
 
