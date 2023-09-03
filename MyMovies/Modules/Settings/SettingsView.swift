@@ -72,74 +72,8 @@ struct SettingsView: View {
     }
 }
 
-struct PrimaryButtonStyle: ButtonStyle {
-
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(configuration.isPressed ? Color.blue.opacity(0.8) : Color.blue)
-            .cornerRadius(10)
-    }
-}
-
-struct PrimaryButtonContent: View {
-
-    var title: String
-    var isLoading: Bool
-
-    var body: some View {
-        ZStack {
-            if isLoading {
-                ProgressView()
-            } else {
-                Text(title)
-            }
-        }
-    }
-}
-
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
-    }
-}
-
-//TODO: move this, add protocol, and adjust dependencies
-class SettingsDataSource {
-
-    func authenticate(apiAccessToken: String) async -> Bool {
-
-        let headers = ["accept": "application/json",
-                       "Authorization": "Bearer \(apiAccessToken)"]
-
-        let getMoviesUrlString = "https://api.themoviedb.org/3/authentication"
-
-        guard let url = URL(string: getMoviesUrlString) else {
-
-            //TODO make it throw
-            return false
-        }
-
-        var request = URLRequest(url: url)
-
-        for header in headers {
-
-            request.addValue(header.value, forHTTPHeaderField: header.key)
-        }
-
-        do {
-
-            let (data, _) = try await URLSession.shared.data(for: request)
-            let authenticateResponse = try JSONDecoder().decode(AuthenticateResponse.self, from: data)
-            return authenticateResponse.success
-
-        } catch {
-
-            print(error)
-            return false
-        }
     }
 }

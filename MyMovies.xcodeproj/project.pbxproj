@@ -20,6 +20,8 @@
 		E8AA010D2AA3C20400EFBBFA /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA010C2AA3C20400EFBBFA /* Movie.swift */; };
 		E8AA010F2AA3C21F00EFBBFA /* ListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA010E2AA3C21F00EFBBFA /* ListResponse.swift */; };
 		E8AA01112AA3D15300EFBBFA /* AuthenticateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA01102AA3D15300EFBBFA /* AuthenticateResponse.swift */; };
+		E8AA01132AA4AB9700EFBBFA /* SettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA01122AA4AB9700EFBBFA /* SettingsDataSource.swift */; };
+		E8AA01162AA4ABCD00EFBBFA /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA01152AA4ABCD00EFBBFA /* ButtonStyles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		E8AA010C2AA3C20400EFBBFA /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		E8AA010E2AA3C21F00EFBBFA /* ListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListResponse.swift; sourceTree = "<group>"; };
 		E8AA01102AA3D15300EFBBFA /* AuthenticateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateResponse.swift; sourceTree = "<group>"; };
+		E8AA01122AA4AB9700EFBBFA /* SettingsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataSource.swift; sourceTree = "<group>"; };
+		E8AA01152AA4ABCD00EFBBFA /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 				E8AA00D62AA3BD1D00EFBBFA /* MyMoviesApp.swift */,
 				E8AA00D82AA3BD1D00EFBBFA /* Persistence.swift */,
 				E8AA00DD2AA3BD1D00EFBBFA /* ContentView.swift */,
+				E8AA01142AA4ABB800EFBBFA /* Styles */,
 				E8AA01092AA3BE4900EFBBFA /* Models */,
 				E8AA01062AA3BE2B00EFBBFA /* Modules */,
 				E8AA00DF2AA3BD2400EFBBFA /* Assets.xcassets */,
@@ -165,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				E8AA010A2AA3BEBD00EFBBFA /* SettingsView.swift */,
+				E8AA01122AA4AB9700EFBBFA /* SettingsDataSource.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -177,6 +183,14 @@
 				E8AA01102AA3D15300EFBBFA /* AuthenticateResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E8AA01142AA4ABB800EFBBFA /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				E8AA01152AA4ABCD00EFBBFA /* ButtonStyles.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,8 +328,10 @@
 				E8AA010F2AA3C21F00EFBBFA /* ListResponse.swift in Sources */,
 				E8AA01112AA3D15300EFBBFA /* AuthenticateResponse.swift in Sources */,
 				E8AA010D2AA3C20400EFBBFA /* Movie.swift in Sources */,
+				E8AA01162AA4ABCD00EFBBFA /* ButtonStyles.swift in Sources */,
 				E8AA00DC2AA3BD1D00EFBBFA /* MyMovies.xcdatamodeld in Sources */,
 				E8AA00DE2AA3BD1D00EFBBFA /* ContentView.swift in Sources */,
+				E8AA01132AA4AB9700EFBBFA /* SettingsDataSource.swift in Sources */,
 				E8AA00D92AA3BD1D00EFBBFA /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
