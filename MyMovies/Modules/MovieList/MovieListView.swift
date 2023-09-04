@@ -17,16 +17,6 @@ struct MovieListView: View {
         NavigationView {
 
             switch viewModel.state {
-            case .empty:
-
-                Button("Load Data") {
-                    Task {
-                        await viewModel.populateMovies()
-                    }
-                }
-                .padding(.horizontal, 20)
-                .frame(height: 40.0)
-                .buttonStyle(PrimaryButtonStyle())
 
             case .loading:
                 ProgressView("Loading...")
@@ -40,9 +30,22 @@ struct MovieListView: View {
                     .navigationTitle("Movies")
 
             case .error(let errorMessage):
-                Text("Error: \(errorMessage)")
-                    .font(.headline)
-                    .foregroundColor(.red)
+                VStack {
+                    Text("Error: \(errorMessage)")
+                        .font(.headline)
+                        .foregroundColor(.red)
+                        .padding()
+
+                    Button("Try again") {
+                        Task {
+                            await viewModel.populateMovies()
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    .frame(height: 40.0)
+                    .buttonStyle(PrimaryButtonStyle())
+                    
+                }
             }
         }
     }

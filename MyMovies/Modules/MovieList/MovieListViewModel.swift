@@ -12,15 +12,21 @@ class MovieListViewModel: ObservableObject {
 
     enum ViewState {
 
-        case empty
         case loading
         case content([Movie])
         case error(String)
     }
 
     // MARK: - Published properties
-    @Published var state: ViewState = .empty
+    @Published var state: ViewState = .loading
 
+    init() {
+
+        Task {
+
+            await self.populateMovies()
+        }
+    }
 
     // MARK: - Functions
     func populateMovies() async {
@@ -37,8 +43,17 @@ class MovieListViewModel: ObservableObject {
                 self.state = .content(movies)
             }
         } catch {
+
             DispatchQueue.main.async {
-                self.state = .error(error.localizedDescription)
+
+                switch error as? ServiceError {
+                case .noToken:
+                    self.state = .error("No API token found. Please go to Settings and insert one.")
+                case .invalidUrl:
+                    self.state = .error("An invalid request has been attempted. Please contact support.")
+                case .none:
+                    self.state = .error(error.localizedDescription)
+                }
             }
         }
     }
