@@ -8,54 +8,73 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-    let movie: Movie // Assuming you have a Movie struct defined
+    let movie: Movie
 
     var body: some View {
         ScrollView {
-
             VStack(alignment: .leading) {
+
+                AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w500\(movie.backdropPath)")) { phase in
+                    switch phase {
+                    case .empty, .failure(_):
+                        Color.gray
+                            .frame(height: 150)
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                    @unknown default:
+                        EmptyView()
+                    }
+                }
+
+                RatingView(averageVote: movie.voteAverage)
+                    .padding()
 
                 Text("Release Date: \(movie.releaseDate)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+                    .padding(.horizontal)
+                    .padding(.bottom)
 
-                Text("Overview:")
+                Text("Overview")
                     .font(.headline)
-                    .padding(.top, 16)
-
+                    .padding(.horizontal)
                 Text(movie.overview)
                     .font(.body)
+                    .padding()
 
                 Text("Popularity: \(String(format: "%.2f", movie.popularity))")
                     .font(.headline)
-                    .padding(.top, 16)
-
-                Text("Average Vote: \(String(format: "%.2f", movie.voteAverage))")
-                    .font(.headline)
+                    .padding()
 
                 Text("Vote Count: \(movie.voteCount)")
                     .font(.headline)
-                    .padding(.bottom, 16)
+                    .padding()
 
-                if movie.video {
-                    Button(action: {
-                        // Handle video trailer action here
-                    }) {
-                        Text("Watch Trailer")
-                            .font(.headline)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
-                }
             }
-            .padding()
             .navigationBarTitle(movie.title)
         }
-
     }
 }
+
+struct RatingView: View {
+    let averageVote: Double
+
+    var body: some View {
+
+        HStack {
+            Text("Average Vote:")
+                .font(.headline)
+            ForEach(0..<5) { index in
+                Image(systemName: index < Int(averageVote / 2.0) ? "star.fill" : "star")
+                    .foregroundColor(.yellow)
+            }
+            Text(String(format: "%.1f", averageVote) + "/10")
+        }
+    }
+}
+
 struct MovieDetail_Previews: PreviewProvider {
     static var previews: some View {
         MovieDetailView(movie: Movie(adult: false,
