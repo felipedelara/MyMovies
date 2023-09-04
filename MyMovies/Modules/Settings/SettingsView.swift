@@ -20,11 +20,23 @@ struct SettingsView: View {
             TextField("Enter an access token for the API", text: $viewModel.accessToken)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal, 20)
-                .padding(.vertical, 10)
                 .onAppear {
 
                     self.viewModel.attemptSavedToken()
                 }
+
+            // MARK: Validation check
+            if viewModel.isValidAccessToken {
+                Text("Valid token ✅ You can start using the app normally.")
+                    .font(.callout)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 10)
+            } else {
+                Text("Invalid or no token ❌ Please add a valid API token from TheMovieDB")
+                    .font(.callout)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 10)
+            }
 
             // MARK: Validate Button
             Button(action: {
@@ -36,25 +48,11 @@ struct SettingsView: View {
             .frame(height: 40.0)
             .buttonStyle(PrimaryButtonStyle())
 
-            // MARK: Validation check
-            if viewModel.isValidAccessToken {
-                Text("Valid token ✅ You can start using the app normally.")
-                    .foregroundColor(.green)
-                    .font(.callout)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
-            } else {
-                Text("Invalid or no token ❌ Please add a valid API token from TheMovieDB")
-                    .foregroundColor(.red)
-                    .font(.callout)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
-            }
-
             // MARK: Go to Moview Link
             Link("Go to TheMovieDB", destination: URL(string: "https://developer.themoviedb.org/v3/reference/intro/authentication#api-key-quick-start")!)
                 .font(.body)
-                .padding()
+                .padding(.horizontal, 20)
+                .padding(.vertical, 10)
 
             Spacer()
         }.padding(.top, 20)

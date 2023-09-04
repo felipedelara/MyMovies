@@ -9,11 +9,16 @@ import SwiftUI
 
 @main
 struct MyMoviesApp: App {
+
     let persistenceController = PersistenceController.shared
+
+    @AppStorage("isDarkModeEnabled") var isDarkModeEnabled = true
 
     var body: some Scene {
         WindowGroup {
             MainView()
+                .tint(.yellow)
+                .preferredColorScheme(isDarkModeEnabled ? .dark : .light)
         }
     }
 }

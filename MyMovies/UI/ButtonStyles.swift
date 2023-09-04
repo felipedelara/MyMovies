@@ -15,7 +15,7 @@ struct PrimaryButtonStyle: ButtonStyle {
             .foregroundColor(.white)
             .padding()
             .frame(maxWidth: .infinity)
-            .background(configuration.isPressed ? Color.blue.opacity(0.8) : Color.blue)
+            .background(configuration.isPressed ? Color.yellow.opacity(0.8) : Color.yellow)
             .cornerRadius(10)
     }
 }
