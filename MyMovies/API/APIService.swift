@@ -62,9 +62,7 @@ class APIService: APIServiceType {
         let headers = ["accept": "application/json",
                        "Authorization": "Bearer \(apiAccessToken)"]
 
-        let getMoviesUrlString = "https://api.themoviedb.org/3/authentication"
-
-        guard let url = URL(string: getMoviesUrlString) else {
+        guard let url = URL(string: Constants.authenticateUrl) else {
 
             //TODO: make it throw
             return false
