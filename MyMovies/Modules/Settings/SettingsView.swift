@@ -9,12 +9,14 @@ import SwiftUI
 
 struct SettingsView: View {
 
-    @ObservedObject var viewModel: SettingsViewModel
+    @StateObject var viewModel: SettingsViewModel = SettingsViewModel()
 
     var body: some View {
         VStack {
+            // MARK: Logo Image
             Image(systemName: "popcorn.circle").font(.system(size: 120)).foregroundColor(viewModel.isValidAccessToken ? .green : .red)
 
+            // MARK: Token TextField
             TextField("Enter an access token for the API", text: $viewModel.accessToken)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal, 20)
@@ -24,6 +26,7 @@ struct SettingsView: View {
                     self.viewModel.attemptSavedToken()
                 }
 
+            // MARK: Validate Button
             Button(action: {
                 self.viewModel.validateToken()
             }) {
@@ -33,6 +36,7 @@ struct SettingsView: View {
             .frame(height: 40.0)
             .buttonStyle(PrimaryButtonStyle())
 
+            // MARK: Validation check
             if viewModel.isValidAccessToken {
                 Text("Valid token ✅ You can start using the app normally.")
                     .foregroundColor(.green)
@@ -47,6 +51,7 @@ struct SettingsView: View {
                     .padding(.vertical, 10)
             }
 
+            // MARK: Go to Moview Link
             Link("Go to TheMovieDB", destination: URL(string: "https://developer.themoviedb.org/v3/reference/intro/authentication#api-key-quick-start")!)
                 .font(.body)
                 .padding()

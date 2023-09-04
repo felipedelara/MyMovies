@@ -54,35 +54,3 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-@MainActor
-class MovieListViewModel: ObservableObject {
-
-    @Published var state: ViewState = .empty
-
-    enum ViewState {
-
-        case empty
-        case loading
-        case content([Movie])
-        case error(String)
-    }
-
-    func populateMovies() async {
-
-        self.state = .loading
-
-        do {
-            try await Task.sleep(nanoseconds: 1_000_000_000)// Sleep for 1 second. Nicer effect visually
-
-            let movies = try await APIService().getMovies()
-
-            DispatchQueue.main.async {
-                self.state = .content(movies)
-            }
-        } catch {
-            DispatchQueue.main.async {
-                self.state = .error(error.localizedDescription)
-            }
-        }
-    }
-}

@@ -25,7 +25,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Movies", systemImage: "list.dash")
                 }
-            SettingsView(viewModel: SettingsViewModel())
+            SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }

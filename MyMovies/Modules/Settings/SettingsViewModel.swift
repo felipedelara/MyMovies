@@ -9,10 +9,12 @@ import Foundation
 
 class SettingsViewModel: ObservableObject {
 
+    // MARK: - Published properties
     @Published var accessToken: String = ""
     @Published private(set) var isValidAccessToken: Bool = false
     @Published private(set) var isLoading: Bool = false
 
+    // MARK: - Functions
     func attemptSavedToken() {
 
         if let token = self.getAccessToken() {
