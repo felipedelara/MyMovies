@@ -64,17 +64,18 @@ struct MovieListItem_Previews: PreviewProvider {
     static var previews: some View {
         
         MovieListItem(movie: Movie(adult: false,
-                                   backdropPath: "",
-                                   genreIDS: [],
-                                   id: 1,
-                                   originalLanguage: "Original language",
-                                   originalTitle: "Title here",
-                                   overview: "Overview here",
-                                   popularity: 10.0,
-                                   posterPath: "",
-                                   releaseDate: "12/01/2001",
-                                   title: "Movie title",
-                                   video: false, voteAverage: 10.0,
-                                   voteCount: 100))
+                                   backdropPath: "/example_backdrop.jpg",
+                                   genreIDS: [28, 12, 14],
+                                   id: 12345,
+                                   originalLanguage: "en",
+                                   originalTitle: "Example Movie",
+                                   overview: "This is an example",
+                                   popularity: 123.45,
+                                   posterPath: "/example_poster.jpg",
+                                   releaseDate: "2023-09-01",
+                                   title: "Example Movie Title",
+                                   video: false,
+                                   voteAverage: 7.8,
+                                   voteCount: 1234))
     }
 }

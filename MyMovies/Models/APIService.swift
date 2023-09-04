@@ -11,9 +11,16 @@ enum ServiceError: Error {
 
     case noToken
     case invalidUrl
+    case genericError
 }
 
-class APIService {
+protocol APIServiceType {
+
+    func getMovies() async throws -> [Movie]
+    func authenticate(apiAccessToken: String) async -> Bool
+}
+
+class APIService: APIServiceType {
 
     func getMovies() async throws -> [Movie] {
 

@@ -20,7 +20,10 @@ class MovieListViewModel: ObservableObject {
     // MARK: - Published properties
     @Published var state: ViewState = .loading
 
-    init() {
+    private var apiService: APIServiceType
+    init(apiService: APIServiceType = APIService()) {
+
+        self.apiService = apiService
 
         Task {
 
@@ -37,7 +40,7 @@ class MovieListViewModel: ObservableObject {
             // Sleep for 1 second. Nicer effect visually
             try await Task.sleep(nanoseconds: 1_000_000_000)
 
-            let movies = try await APIService().getMovies()
+            let movies = try await apiService.getMovies()
 
             DispatchQueue.main.async {
                 self.state = .content(movies)
@@ -51,7 +54,7 @@ class MovieListViewModel: ObservableObject {
                     self.state = .error("No API token found. Please go to Settings and insert one.")
                 case .invalidUrl:
                     self.state = .error("An invalid request has been attempted. Please contact support.")
-                case .none:
+                case .none, .genericError:
                     self.state = .error(error.localizedDescription)
                 }
             }
