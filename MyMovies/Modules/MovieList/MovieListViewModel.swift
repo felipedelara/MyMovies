@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 class MovieListViewModel: ObservableObject {
 
     enum ViewState {
@@ -38,7 +37,7 @@ class MovieListViewModel: ObservableObject {
 
         do {
             // Sleep for 1 second. Nicer effect visually
-            try await Task.sleep(nanoseconds: 1_000_000_000)
+            try await Task.sleep(nanoseconds: 500_000_000)
 
             let movies = try await apiService.getMovies()
 

@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import MyMovies
+@testable import MyMovies
 
 final class ModelTests: XCTestCase {
 

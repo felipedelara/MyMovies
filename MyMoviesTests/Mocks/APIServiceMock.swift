@@ -1,5 +1,5 @@
 //
-//  GoodAPIServiceMock.swift
+//  APIServiceMock.swift
 //  MyMoviesTests
 //
 //  Created by Felipe Lara on 04/09/2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GoodAPIServiceMock: APIServiceType {
+class APIServiceMock: APIServiceType {
 
     var shouldThrowError: Bool
     var defaultBoolResults: Bool
