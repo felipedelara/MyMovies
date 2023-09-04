@@ -33,7 +33,10 @@ class MovieListViewModel: ObservableObject {
     // MARK: - Functions
     func populateMovies() async {
 
-        self.state = .loading
+        DispatchQueue.main.async {
+
+            self.state = .loading
+        }
 
         do {
             // Sleep for half a second. Nicer effect visually

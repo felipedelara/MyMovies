@@ -37,7 +37,10 @@ class SettingsViewModel: ObservableObject {
 
     func validateToken() {
 
-        self.isLoading = true
+        DispatchQueue.main.async {
+
+            self.isLoading = true
+        }
 
         Task {
             do {
