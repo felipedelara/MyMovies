@@ -24,6 +24,7 @@ struct MyMoviesApp: App {
 }
 
 struct MainView: View {
+
     var body: some View {
         TabView {
             MovieListView()

@@ -18,9 +18,11 @@ final class ModelTests: XCTestCase {
 
         //Arrange
         guard let jsonURL = Bundle(for: type(of: self)).url(forResource: "ListResponseTest", withExtension: "json") else {
+
             XCTFail("JSON file not found.")
             return
         }
+        
         let jsonData = try Data(contentsOf: jsonURL)
 
         //Act
@@ -43,6 +45,7 @@ final class ModelTests: XCTestCase {
 
         //Arrange
         guard let jsonURL = Bundle(for: type(of: self)).url(forResource: "ListResponseTest", withExtension: "json") else {
+
             XCTFail("JSON file not found.")
             return
         }

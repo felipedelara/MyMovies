@@ -11,11 +11,9 @@ import XCTest
 class MovieListViewModelTests: XCTestCase {
 
     override func setUpWithError() throws { }
-
     override func tearDownWithError() throws { }
 
     // MARK: - Tests
-
     func testPopulateMoviesSuccess() {
 
         // Arrange
@@ -65,7 +63,7 @@ class MovieListViewModelTests: XCTestCase {
 
     func testPopulateMoviesFailure() {
 
-        //Arrange
+        //  Arrange
         let apiMock = APIServiceMock(shouldThrowError: true, defaultBoolResults: true)
         let viewModel = MovieListViewModel(apiService: apiMock)
         let expectation = XCTestExpectation(description: "Movie load with bad API mock throws error")
@@ -74,7 +72,7 @@ class MovieListViewModelTests: XCTestCase {
         Task {
             await viewModel.populateMovies()
 
-            //The view model adds half a second of a loading delay for visual purposes
+            // The view model adds half a second of a loading delay for visual purposes
             try? await Task.sleep(nanoseconds: 1_000_000_000)
 
             // Assert

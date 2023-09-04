@@ -36,7 +36,7 @@ class MovieListViewModel: ObservableObject {
         self.state = .loading
 
         do {
-            // Sleep for 1 second. Nicer effect visually
+            // Sleep for half a second. Nicer effect visually
             try await Task.sleep(nanoseconds: 500_000_000)
 
             let movies = try await apiService.getMovies()
