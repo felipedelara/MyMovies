@@ -12,10 +12,8 @@ struct MovieDetailView: View {
 
     var body: some View {
         ScrollView {
+
             VStack(alignment: .leading) {
-                Text(movie.title)
-                    .font(.title)
-                    .padding(.bottom, 8)
 
                 Text("Release Date: \(movie.releaseDate)")
                     .font(.subheadline)
@@ -55,22 +53,23 @@ struct MovieDetailView: View {
             .padding()
             .navigationBarTitle(movie.title)
         }
+
     }
 }
 struct MovieDetail_Previews: PreviewProvider {
     static var previews: some View {
         MovieDetailView(movie: Movie(adult: false,
-                                 backdropPath: "",
-                                 genreIDS: [],
-                                 id: 1,
-                                 originalLanguage: "Original language",
-                                 originalTitle: "Title here",
-                                 overview: "Overview here",
-                                 popularity: 10.0,
-                                 posterPath: "",
-                                 releaseDate: "12/01/2001",
-                                 title: "Movie title",
-                                 video: false, voteAverage: 10.0,
-                                 voteCount: 100))
+                                     backdropPath: "",
+                                     genreIDS: [],
+                                     id: 1,
+                                     originalLanguage: "Original language",
+                                     originalTitle: "Title here",
+                                     overview: "Overview here",
+                                     popularity: 10.0,
+                                     posterPath: "",
+                                     releaseDate: "12/01/2001",
+                                     title: "Movie title",
+                                     video: false, voteAverage: 10.0,
+                                     voteCount: 100))
     }
 }

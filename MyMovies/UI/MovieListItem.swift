@@ -32,7 +32,12 @@ struct MovieListItem: View {
                             .frame(width: 80, height: 120)
                             .cornerRadius(8)
                     case .failure(_):
-                        EmptyView()
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 120)
+                            .cornerRadius(8)
+                            .foregroundColor(.gray)
                     @unknown default:
                         EmptyView()
                     }
